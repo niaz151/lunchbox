@@ -15,7 +15,6 @@ class LocationsMap extends React.Component{
 const Container = styled.div`
   height: 100%;
   width: 68%;
-  border:1px solid black;
   
   @media(max-width: 750px){
     display:none;
