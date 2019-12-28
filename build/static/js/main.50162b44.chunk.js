@@ -1,2 +1,0 @@
-(this.webpackJsonplunchbox=this.webpackJsonplunchbox||[]).push([[0],{3:function(e,n,t){e.exports=t(8)},8:function(e,n,t){"use strict";t.r(n);var c=t(0),r=t.n(c),a=t(2);var o=function(){return r.a.createElement("div",{className:"App"},"Testing")};t.n(a).a.render(r.a.createElement(o,null),document.getElementById("root"))}},[[3,1,2]]]);
-//# sourceMappingURL=main.50162b44.chunk.js.map
