@@ -23,8 +23,8 @@ const HeaderContainer = styled.div`
 `
 
 const LogoContainer = styled.div`
-  height: 50px;
-  width: 200px;
+  height: 40px;
+  width: 170px;
   margin-left: 20px;
 `
 
