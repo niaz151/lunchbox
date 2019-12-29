@@ -1,23 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import PickupOption from './PickupOption';
+import DeliveryOption from './DeliveryOption';
 class LocationsMenu extends React.Component{
 
   constructor(props){
     super(props)
     this.state = {
+      // 1, -1 TO REPRESENT BINARY MENU OPTION
       active:1
     }
   }
 
-  MenuTitle = () => (
+  // MODULAR MENU TITLE RENDER
+  renderMenuTitle = () => (
     <MenuDescHero>
       <MenuDescSpan> FIND YOUR NEAREST </MenuDescSpan>
       <MenuDescSpan> 16 HANDLES! </MenuDescSpan>
     </MenuDescHero>
   )
 
-  MenuNav = () => {
+  // MODULAR MENU NAV RENDER
+  renderMenuNavOptions = () => {
     return(
       <MenuDescOptions>
         <MenuNavBar>
@@ -28,6 +32,11 @@ class LocationsMenu extends React.Component{
     )
   }
 
+  renderMenuNavOptionComponent = (type) => {
+    return this.state.active === 1 ? <PickupOption/> : <DeliveryOption/>
+  }
+
+  // SET STATE TO CLICKED MENU NAV
   handleMenuNav = (tab_num) => {
     if(this.state.active !== tab_num){
       this.setState({active:tab_num})
@@ -35,11 +44,13 @@ class LocationsMenu extends React.Component{
   }
 
   render(){
+
     return(
       <Container>
         <MenuDescription>
-          {this.MenuTitle()}
-          {this.MenuNav()}
+          {this.renderMenuTitle()}
+          {this.renderMenuNavOptions()}
+          {this.renderMenuNavOptionComponent()}
         </MenuDescription>
       </Container>
     )

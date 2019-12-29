@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-const PickupOption = () => {
-  return(
-    <input type='text' placeholder='Enter Your Address' />
-  )
+class PickupOption extends React.Component{
+
+  render(){
+    return(
+      <div>
+        Pickup Menu
+      </div>
+    )
+  }
 }
 
 export default PickupOption;

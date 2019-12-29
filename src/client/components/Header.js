@@ -25,7 +25,7 @@ const HeaderContainer = styled.div`
 const LogoContainer = styled.div`
   height: 40px;
   width: 140px;
-  margin-left: 20px;
+  margin-left: 20px;  
 `
 
 const LoginContainer = styled.div`
