@@ -3,14 +3,12 @@ import LocationsMenu from './LocationsMenu';
 import LocationsMaps from './LocationsMap';
 import styled from 'styled-components';
 
-
 class LandingPage extends React.Component{
 
   render(){
     return(
       <Container>
         <LocationsMenu/>
-        
       </Container>
     )
   }

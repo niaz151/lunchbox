@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import PickupOption from './PickupOption';
 import DeliveryOption from './DeliveryOption';
+import StoreCard from './StoreCard';
+
+
 class LocationsMenu extends React.Component{
 
   constructor(props){
@@ -52,6 +55,10 @@ class LocationsMenu extends React.Component{
           {this.renderMenuNavOptions()}
         </MenuDescription>
         {this.renderMenuNavOptionComponent()}
+        <CardContainer>
+          <StoreCard/>
+          <StoreCard/>
+        </CardContainer>
       </Container>
     )
   }
@@ -125,6 +132,13 @@ const MenuNavSpan = styled.div`
   font-size: 18px;
   border-bottom: ${props => props.active === true ? "4px solid #E8467F" : "1px inset #D4E2D4"}
   cursor: pointer;
+`
+const CardContainer = styled.div`
+  width: 100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 `
 
 export default LocationsMenu;
