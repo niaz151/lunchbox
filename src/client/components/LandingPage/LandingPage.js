@@ -1,5 +1,5 @@
 import React from 'react';
-import LocationsMenu from './LocationsMenu';
+import LocationsMenu from './LocationsMenu/LocationsMenu';
 import LocationsMaps from './LocationsMap';
 import styled from 'styled-components';
 

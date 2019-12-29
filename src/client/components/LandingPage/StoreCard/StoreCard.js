@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import {ContactContainer} from './ContactContainer';
+import {HoursContainer} from './HoursContainer';
 
 class StoreCard extends React.Component{
 
   render(){
     return(
       <Container>
-        Card
+        <ContactContainer/>
+        <HoursContainer/>
       </Container>
     )
   }

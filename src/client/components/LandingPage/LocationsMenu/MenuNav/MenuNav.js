@@ -3,17 +3,11 @@ import styled from 'styled-components';
 
 class MenuNav extends React.Component {
 
-  constructor(props){
-    super(props)
-    this.state = {
-      activeTab:1
-    }
-  }
 
-    // SET STATE TO CLICKED MENU NAV
+    // CLICK HANDLER AND PARENT CALLBACK
     handleClick = (tab_num) => {
-      if(this.state.activeTab !== tab_num){
-        this.setState({activeTab:tab_num})
+      if(this.props.curr_tab !== tab_num){
+        this.props.handleNav()
       }
     }
   
@@ -21,8 +15,8 @@ class MenuNav extends React.Component {
     return(
       <MenuDescOptions>
         <MenuNavBar>
-          <MenuNavSpan active={this.state.activeTab === 1} onClick={() => this.handleClick(1)}> PICKUP </MenuNavSpan>
-          <MenuNavSpan active={this.state.activeTab === -1} onClick={() => this.handleClick(-1)}> DELIVERY </MenuNavSpan>
+          <MenuNavSpan active={this.props.curr_tab === 1} onClick={() => this.handleClick(1)}> PICKUP </MenuNavSpan>
+          <MenuNavSpan active={this.props.curr_tab === -1} onClick={() => this.handleClick(-1)}> DELIVERY </MenuNavSpan>
         </MenuNavBar>
       </MenuDescOptions>
     )

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import PickupOption from './PickupOption';
-import DeliveryOption from './DeliveryOption';
-import StoreCard from './StoreCard';
+import PickupOption from './MenuNav/PickupOption';
+import DeliveryOption from './MenuNav/DeliveryOption';
+import StoreCard from '../StoreCard/StoreCard';
 import MenuTitle from './MenuTitle'
-import MenuNav from './MenuNav';
+import MenuNav from './MenuNav/MenuNav';
 
 class LocationsMenu extends React.Component{
 
@@ -21,10 +21,9 @@ class LocationsMenu extends React.Component{
   }
 
   // SET STATE TO CLICKED MENU NAV
-  handleMenuNav = (tab_num) => {
-    if(this.state.activeTab !== tab_num){
-      this.setState({activeTab:tab_num})
-    }
+  handleMenuNav = () => {
+    var curr_tab = this.state.activeTab
+    this.setState({activeTab:-curr_tab})
   }
 
   render(){
@@ -33,7 +32,7 @@ class LocationsMenu extends React.Component{
       <Container>
         <MenuHeader>
           <MenuTitle/>
-          <MenuNav/>
+          <MenuNav handleNav={() => this.handleMenuNav()} curr_tab={this.state.activeTab} />
         </MenuHeader>
         {this.renderMenuNavOptionComponent()}
         <CardContainer>
@@ -50,7 +49,6 @@ const Container = styled.div`
   width: 32%;
   border-right:1px solid black;
   overflow-y:scroll
-  
 
   @media(max-width: 1200px){
     width: 50vw;
@@ -76,6 +74,7 @@ const CardContainer = styled.div`
   flex-direction:column;
   align-items:center;
   justify-content:center;
+  background-color: #EFF1F4;
 `
 
 export default LocationsMenu;
