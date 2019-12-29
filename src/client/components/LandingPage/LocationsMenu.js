@@ -81,7 +81,7 @@ const MenuDescHero = styled.div`
   justify-content: center;
 `
 const MenuDescSpan = styled.div`
-  margin-left: 10px;
+  margin-left: 15px;
   font-family: 'Lato',sans-serif;
   font-size:24px;
   font-weight:700;
