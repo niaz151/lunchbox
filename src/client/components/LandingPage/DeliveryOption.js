@@ -5,6 +5,7 @@ class DeliveryOption extends React.Component{
   render(){
     return(
       <Container>
+        <GlobalStyle/>
         <FormInstructions>
           <FormLeftSpan> Where's your food going? </FormLeftSpan>
           <FormRightSpan> Apt/Suite </FormRightSpan> 
@@ -23,6 +24,11 @@ class DeliveryOption extends React.Component{
   }
 }
 
+const GlobalStyle = createGlobalStyle`
+  input:focus{
+    outline:none;
+  }
+`
 const Container = styled.div`
   height: 170px;
   width: 100%;
