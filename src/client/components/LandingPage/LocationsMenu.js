@@ -68,6 +68,8 @@ const Container = styled.div`
   height: 100%;
   width: 32%;
   border-right:1px solid black;
+  overflow-y:scroll
+  overflow-x:hidden;
 
   @media(max-width: 1200px){
     width: 50vw;
