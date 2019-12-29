@@ -3,20 +3,43 @@ import styled from 'styled-components';
 
 class LocationsMenu extends React.Component{
 
+  constructor(props){
+    super(props)
+    this.state = {
+      active:1
+    }
+  }
+
+  MenuTitle = () => (
+    <MenuDescHero>
+      <MenuDescSpan> FIND YOUR NEAREST </MenuDescSpan>
+      <MenuDescSpan> 16 HANDLES! </MenuDescSpan>
+    </MenuDescHero>
+  )
+
+  MenuNav = () => {
+    return(
+      <MenuDescOptions>
+        <MenuNavBar>
+          <MenuNavSpan active={this.state.active === 1} onClick={() => this.handleMenuNav(1)}> PICKUP </MenuNavSpan>
+          <MenuNavSpan active={this.state.active === -1} onClick={() => this.handleMenuNav(-1)}> DELIVERY </MenuNavSpan>
+        </MenuNavBar>
+      </MenuDescOptions>
+    )
+  }
+
+  handleMenuNav = (tab_num) => {
+    if(this.state.active !== tab_num){
+      this.setState({active:tab_num})
+    }
+  }
+
   render(){
     return(
       <Container>
         <MenuDescription>
-          <MenuDescHero>
-            <MenuDescSpan> FIND YOUR NEAREST </MenuDescSpan>
-            <MenuDescSpan> 16 HANDLES! </MenuDescSpan>
-          </MenuDescHero>
-          <MenuDescOptions>
-            <MenuNavBar>
-              <MenuNavSpan active={true} > PICKUP </MenuNavSpan>
-              <MenuNavSpan active={false} > DELIVERY </MenuNavSpan>
-            </MenuNavBar>
-          </MenuDescOptions>
+          {this.MenuTitle()}
+          {this.MenuNav()}
         </MenuDescription>
       </Container>
     )
