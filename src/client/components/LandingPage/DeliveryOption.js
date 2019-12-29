@@ -40,6 +40,7 @@ const FormInstructions = styled.div`
 const FormSpan = styled.span`
   font-family:'Lato',sans-serif;
   font-size: 16px;
+  color: #8E8E8E;
 `
 const FormLeftSpan = styled(FormSpan)`
   margin-left: 20px;
@@ -49,7 +50,7 @@ const FormRightSpan = styled(FormSpan)`
 `
 
 const FormInputContainer = styled.div`
-  flex:1;
+  height: 30%;
   width: 100%;
   display:flex;
   align-items:center;
@@ -73,7 +74,7 @@ const RightFormInput = styled(FormInput)`
   text-align:right;
   `
 const BtnContainer = styled.div`
-  flex:1;
+  height: 40%;
   width:100%;
   display:flex;
   align-items:center;
@@ -81,7 +82,7 @@ const BtnContainer = styled.div`
 `
 
 const Btn = styled.button`
-  height: 80%;
+  height: 60%;
   width: 80%;
   background-color: ${props => props.color};
   color:white;
