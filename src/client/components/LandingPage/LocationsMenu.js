@@ -8,7 +8,7 @@ class LocationsMenu extends React.Component{
     super(props)
     this.state = {
       // 1, -1 TO REPRESENT BINARY MENU OPTION
-      active:1
+      activeTab:1
     }
   }
 
@@ -25,21 +25,21 @@ class LocationsMenu extends React.Component{
     return(
       <MenuDescOptions>
         <MenuNavBar>
-          <MenuNavSpan active={this.state.active === 1} onClick={() => this.handleMenuNav(1)}> PICKUP </MenuNavSpan>
-          <MenuNavSpan active={this.state.active === -1} onClick={() => this.handleMenuNav(-1)}> DELIVERY </MenuNavSpan>
+          <MenuNavSpan active={this.state.activeTab === 1} onClick={() => this.handleMenuNav(1)}> PICKUP </MenuNavSpan>
+          <MenuNavSpan active={this.state.activeTab === -1} onClick={() => this.handleMenuNav(-1)}> DELIVERY </MenuNavSpan>
         </MenuNavBar>
       </MenuDescOptions>
     )
   }
 
   renderMenuNavOptionComponent = (type) => {
-    return this.state.active === 1 ? <PickupOption/> : <DeliveryOption/>
+    return this.state.activeTab === 1 ? <PickupOption/> : <DeliveryOption/>
   }
 
   // SET STATE TO CLICKED MENU NAV
   handleMenuNav = (tab_num) => {
-    if(this.state.active !== tab_num){
-      this.setState({active:tab_num})
+    if(this.state.activeTab !== tab_num){
+      this.setState({activeTab:tab_num})
     }
   }
 
@@ -50,8 +50,8 @@ class LocationsMenu extends React.Component{
         <MenuDescription>
           {this.renderMenuTitle()}
           {this.renderMenuNavOptions()}
-          {this.renderMenuNavOptionComponent()}
         </MenuDescription>
+        {this.renderMenuNavOptionComponent()}
       </Container>
     )
   }
@@ -67,14 +67,13 @@ const Container = styled.div`
   }
 `
 const MenuDescription = styled.div`
-  height: 275px;
-  width: 100%;
-  box-shadow: 0 4px 2px -2px gray;
+  height: 155px;
+  width: 98%;
   display: flex;
   flex-direction: column;
 `
 const MenuDescHero = styled.div`
-  height: 40%;
+  height: 60%;
   width: 100%;
   display:flex;
   flex-direction: column;
@@ -90,8 +89,10 @@ const MenuDescSpan = styled.div`
   margin-top:10px;
 `
 const MenuDescOptions = styled.div`
-  height: 60%;
+  height: 40%;
   width: 100%;
+  display:flex;
+  position:relative;
 `
 
 const MenuNavBar = styled.div`
@@ -100,11 +101,13 @@ const MenuNavBar = styled.div`
   display:flex;
   align-items:center;
   justify-content:center;
+  position:absolute;
+  bottom:0;
 `
 
 const MenuNavSpan = styled.div`
   height: 100%;
-  width: 48%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
