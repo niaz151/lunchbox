@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import PickupOption from './PickupOption';
 import DeliveryOption from './DeliveryOption';
 import StoreCard from './StoreCard';
-
+import MenuTitle from './MenuTitle'
+import MenuNav from './MenuNav';
 
 class LocationsMenu extends React.Component{
 
@@ -13,26 +14,6 @@ class LocationsMenu extends React.Component{
       // 1, -1 TO REPRESENT BINARY MENU OPTION
       activeTab:1
     }
-  }
-
-  // MODULAR MENU TITLE RENDER
-  renderMenuTitle = () => (
-    <MenuDescHero>
-      <MenuDescSpan> FIND YOUR NEAREST </MenuDescSpan>
-      <MenuDescSpan> 16 HANDLES! </MenuDescSpan>
-    </MenuDescHero>
-  )
-
-  // MODULAR MENU NAV RENDER
-  renderMenuNavOptions = () => {
-    return(
-      <MenuDescOptions>
-        <MenuNavBar>
-          <MenuNavSpan active={this.state.activeTab === 1} onClick={() => this.handleMenuNav(1)}> PICKUP </MenuNavSpan>
-          <MenuNavSpan active={this.state.activeTab === -1} onClick={() => this.handleMenuNav(-1)}> DELIVERY </MenuNavSpan>
-        </MenuNavBar>
-      </MenuDescOptions>
-    )
   }
 
   renderMenuNavOptionComponent = (type) => {
@@ -50,10 +31,10 @@ class LocationsMenu extends React.Component{
 
     return(
       <Container>
-        <MenuDescription>
-          {this.renderMenuTitle()}
-          {this.renderMenuNavOptions()}
-        </MenuDescription>
+        <MenuHeader>
+          <MenuTitle/>
+          <MenuNav/>
+        </MenuHeader>
         {this.renderMenuNavOptionComponent()}
         <CardContainer>
           <StoreCard/>
@@ -69,7 +50,7 @@ const Container = styled.div`
   width: 32%;
   border-right:1px solid black;
   overflow-y:scroll
-  overflow-x:hidden;
+  
 
   @media(max-width: 1200px){
     width: 50vw;
@@ -82,58 +63,12 @@ const Container = styled.div`
   @media(max-width: 750px){
     width: 100vw;
   }
-
 `
-const MenuDescription = styled.div`
+const MenuHeader = styled.div`
   height: 155px;
   width: 100%;
   display: flex;
   flex-direction: column;
-`
-const MenuDescHero = styled.div`
-  height: 60%;
-  width: 100%;
-  display:flex;
-  flex-direction: column;
-  align-items:flex-start;
-  justify-content: center;
-`
-const MenuDescSpan = styled.div`
-  margin-left: 15px;
-  font-family: 'Lato',sans-serif;
-  font-size:24px;
-  font-weight:700;
-  color: #565656;
-  margin-top:10px;
-`
-const MenuDescOptions = styled.div`
-  height: 40%;
-  width: 100%;
-  display:flex;
-  position:relative;
-`
-
-const MenuNavBar = styled.div`
-  height: 50px;
-  width: 100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:absolute;
-  bottom:0;
-`
-
-const MenuNavSpan = styled.div`
-  height: 100%;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${ props => props.active === true ? "#E8467F" : "#717171" };
-  font-family: 'Lato', sans-serif;
-  font-size: 18px;
-  border-bottom: ${props => props.active === true ? "4px solid #E8467F" : "1px inset #D4E2D4"}
-  cursor: pointer;
 `
 const CardContainer = styled.div`
   width: 100%;
