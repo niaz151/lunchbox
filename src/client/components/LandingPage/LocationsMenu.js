@@ -62,13 +62,22 @@ const Container = styled.div`
   width: 32%;
   border-right:1px solid black;
 
+  @media(max-width: 1200px){
+    width: 50vw;
+  }
+
+  @media(max-width: 1050px){
+    width: 65vw;
+  }
+
   @media(max-width: 750px){
     width: 100vw;
   }
+
 `
 const MenuDescription = styled.div`
   height: 155px;
-  width: 98%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 `
