@@ -34,7 +34,6 @@ const Container = styled.div`
 const TitleContainer = styled.div`
   height: 30%;
   width: calc(100% - 30px);
- 
   display:flex;
   align-items:center;
   justify-content: space-between;
@@ -48,6 +47,7 @@ const CustomTitle = styled.div`
   display:flex;
   align-items:center;
   justify-content:center;
+  font-weight: bold;
 `
 const CustomBtn = styled.div`
   height: 35px;
@@ -60,6 +60,7 @@ const CustomBtn = styled.div`
   border-radius: 4px;
   font-family: 'Lato', sans-serif;
   color: #565656;
+  font-weight:bold;
 `
 
 const PhoneContainer = styled.div`
