@@ -12,8 +12,15 @@ class LocationsMenu extends React.Component{
     super(props)
     this.state = {
       // 1, -1 TO REPRESENT BINARY MENU OPTION
-      activeTab:1
+      activeTab:1,
+      branches:[]
     }
+  }
+
+  componentDidMount(){
+    fetch('https://localhost:3001/getBranchIds')
+    .then( (data) => console.log(data) )
+    .catch(err => console.log(err))
   }
 
   renderMenuNavOptionComponent = (type) => {

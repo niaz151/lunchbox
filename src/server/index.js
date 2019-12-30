@@ -24,6 +24,24 @@ app.get('/', (req,res) => {
 })
 
 
+app.get('/getBranchIds', (req,res) => {
+
+  const query = `SELECT branch_id FROM branches`
+  
+  db.query(query, (err,results) => {
+    if(err){
+      res.send(err)
+    }
+    else{
+      return res.json({
+        data:results
+      })
+    }
+  })
+})
+
+
+
 app.get('/getHours', (req,res) => {
 
   const {branch_id} = req.query
