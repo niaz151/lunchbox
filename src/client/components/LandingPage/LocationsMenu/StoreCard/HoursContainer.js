@@ -61,22 +61,31 @@ export default class HoursContainer extends React.Component {
     }
   }
 
-  renderCustomLabel = (text,type,isActive) => {
+  renderCustomLabel = (text,type) => {
+
+    var arrow_status
+
+    if(type === 'pickup'){
+      arrow_status = this.state.pickupActive
+    }
+    else{
+      arrow_status = this.state.storeActive
+    }
+
     return(
       <Label onClick={type === 'pickup' ?  () => this.handleLabelClick('pickup') :  () => this.handleLabelClick('store') } >
         <CustomText> {text} </CustomText>
-        { (isActive === true) ? <ArrowDown/> :  <ArrowLeft/>}
+        { (arrow_status === 1) ? <ArrowLeft/> :  <ArrowDown/>}
       </Label>
     )
   }
 
-
   render(){
     return (
       <Container>
-        {this.renderCustomLabel('PICKUP HOURS', 'pickup', false)}
+        {this.renderCustomLabel('PICKUP HOURS', 'pickup')}
         { this.state.pickupActive === 1 ? this.renderMinPickupHours() : this.renderMaxPickupHours()}
-        {this.renderCustomLabel('STORE HOURS', 'store', false)}
+        {this.renderCustomLabel('STORE HOURS', 'store')}
         {this.state.storeActive === 1 ? this.renderMinStoreHours() : this.renderMaxStoreHours() }
       </Container>
     )
@@ -126,7 +135,7 @@ const HoursText = styled.div`
   align-self: flex-start;
 `
 const Arrow = styled.i`
-  border: solid black;
+  border: solid #565656;
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 3px;

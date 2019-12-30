@@ -1,6 +1,6 @@
 import React from 'react';
-import LocationsMenu from './LocationsMenu/LocationsMenu';
-import LocationsMaps from './LocationsMap';
+import LocationsMenu from './LocationsMenu/index';
+import LocationsMaps from './LocationsMap/index';
 import styled from 'styled-components';
 
 class LandingPage extends React.Component{

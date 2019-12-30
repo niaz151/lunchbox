@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import PickupOption from './MenuNav/PickupOption';
 import DeliveryOption from './MenuNav/DeliveryOption';
-import StoreCard from '../StoreCard/StoreCard';
+import StoreCard from './StoreCard/index';
 import MenuTitle from './MenuTitle'
-import MenuNav from './MenuNav/MenuNav';
+import MenuNav from './MenuNav/index';
 
 class LocationsMenu extends React.Component{
 
