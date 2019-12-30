@@ -49,6 +49,7 @@ const Container = styled.div`
   width: 32%;
   border-right:1px solid black;
   overflow-y:scroll;
+  overflow-x:hidden;
 
   @media(max-width: 1200px){
     width: 50vw;
@@ -76,6 +77,7 @@ const CardContainer = styled.div`
   justify-content:center;
   background-color: #EFF1F4;
   padding-bottom: 20px;
+  margin-top:10px;
 `
 
 export default LocationsMenu;

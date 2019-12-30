@@ -32,9 +32,9 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.div`
   height: 170px;
   width: 100%;
-  box-shadow: 0px 4px 2px -2px gray;
   display:flex;
   flex-direction:column;
+  box-shadow: 0 4px 7px 2px #b8b8b8;
 `
 const FormInstructions = styled.div`
   flex:1;
