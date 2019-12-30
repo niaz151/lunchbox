@@ -36,11 +36,11 @@ const TitleContainer = styled.div`
   width: calc(100% - 30px);
   display:flex;
   align-items:center;
+  margin-top:20px;
   justify-content: space-between;
 `
 
 const CustomTitle = styled.div`
-  height: 15px;
   color: #E8467F;
   font-family: 'Lato', sans-serif;
   font-size: 18px;
@@ -61,19 +61,24 @@ const CustomBtn = styled.div`
   font-family: 'Lato', sans-serif;
   color: #565656;
   font-weight:bold;
+
+  &:hover{
+    background-color: #565656;
+    color:white;
+  }
 `
 
 const PhoneContainer = styled.div`
   height: 20%;
-
   width: calc(100% - 30px);
   position:relative;
   display:flex;
   align-items:center;
+  margin-top:10px;
 `
 const CustomPhoneNum = styled.div`
   font-family:'Lato',sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   position:absolute;
   left:0;
 `
@@ -84,9 +89,10 @@ const AddressContainer = styled.div`
   flex-direction:column;
   align-items:center;
   justify-content:center;
+  margin-top:10px;
 `
 
 const CustomText = styled.div`
   font-family:'Lato',sans-serif;
-  font-size:13px;
+  font-size:14px;
 `

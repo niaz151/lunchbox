@@ -74,9 +74,9 @@ export default class HoursContainer extends React.Component {
   render(){
     return (
       <Container>
-        {this.renderCustomLabel('Pickup Hours', 'pickup', false)}
+        {this.renderCustomLabel('PICKUP HOURS', 'pickup', false)}
         { this.state.pickupActive === 1 ? this.renderMinPickupHours() : this.renderMaxPickupHours()}
-        {this.renderCustomLabel('Store Hours', 'store', false)}
+        {this.renderCustomLabel('STORE HOURS', 'store', false)}
         {this.state.storeActive === 1 ? this.renderMinStoreHours() : this.renderMaxStoreHours() }
       </Container>
     )
