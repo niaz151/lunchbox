@@ -1,5 +1,6 @@
 ### Tech Stack ###
 
+
  #### Front End ####
  
  React (Styled Components) 
@@ -13,7 +14,8 @@
  Jenkins (Github Integraton)
 
 
-#### Comments ####
+
+### Comments ###
 
  1. The Pickup/Delivery pink underbar does not scale properly when testing responsiveness, whereas mine does
  
