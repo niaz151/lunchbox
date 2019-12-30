@@ -50,6 +50,8 @@ export default class HoursContainer extends React.Component {
     )
   }
 
+
+  // ADJUST STATE WHEN LABEL CLICKED
   handleLabelClick = (type) => {
     if(type === 'pickup'){
       var curr_hours = this.state.pickupActive
@@ -61,6 +63,8 @@ export default class HoursContainer extends React.Component {
     }
   }
 
+
+  // RENDER ARROW TYPE DEPENDING ON STATE
   renderCustomLabel = (text,type) => {
 
     var arrow_status
@@ -80,11 +84,12 @@ export default class HoursContainer extends React.Component {
     )
   }
 
+
   render(){
     return (
       <Container>
         {this.renderCustomLabel('PICKUP HOURS', 'pickup')}
-        { this.state.pickupActive === 1 ? this.renderMinPickupHours() : this.renderMaxPickupHours()}
+        {this.state.pickupActive === 1 ? this.renderMinPickupHours() : this.renderMaxPickupHours()}
         {this.renderCustomLabel('STORE HOURS', 'store')}
         {this.state.storeActive === 1 ? this.renderMinStoreHours() : this.renderMaxStoreHours() }
       </Container>
