@@ -24,14 +24,14 @@ export default class HoursContainer extends React.Component {
     return(
       <Hours>
         <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
+        <HoursText> Mon: 12:00 PM - 5:00 PM </HoursText>
+        <HoursText> Tues: 12:00 PM - 5:00 PM </HoursText>
+        <HoursText> Wed: 12:00 PM - 5:00 PM </HoursText>
       </Hours>
     )
   }
 
-  renderMinDeliveryHours = () => {
+  renderMinStoreHours = () => {
     return(
       <Hours>
         <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
@@ -39,37 +39,48 @@ export default class HoursContainer extends React.Component {
     )
   }
 
-  renderMaxDeliveryHours = () => {
+  renderMaxStoreHours = () => {
     return(
       <Hours>
         <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
+        <HoursText> Mon: 12:00 PM - 5:00 PM </HoursText>
+        <HoursText> Tues: 12:00 PM - 5:00 PM </HoursText>
+        <HoursText> Wed: 12:00 PM - 5:00 PM </HoursText>
       </Hours>
     )
   }
+
+  handleLabelClick = (type) => {
+    if(type === 'pickup'){
+      var curr_hours = this.state.pickupActive
+      this.setState({pickupActive: -curr_hours})
+    }
+    else{
+      var curr_hours = this.state.storeActive
+      this.setState({storeActive: -curr_hours})
+    }
+  }
+
+  renderCustomLabel = (text,type,isActive) => {
+    return(
+      <Label onClick={type === 'pickup' ?  () => this.handleLabelClick('pickup') :  () => this.handleLabelClick('store') } >
+        <CustomText> {text} </CustomText>
+        { (isActive === true) ? <ArrowDown/> :  <ArrowLeft/>}
+      </Label>
+    )
+  }
+
 
   render(){
     return (
       <Container>
-        <CustomLabel name='PICKUP HOURS' isActive={false} />
-        {this.renderMinPickupHours()}
-        <CustomLabel name='DELIVERY HOURS' isActive={false} />
-        {this.renderMaxDeliveryHours()}
+        {this.renderCustomLabel('Pickup Hours', 'pickup', false)}
+        { this.state.pickupActive === 1 ? this.renderMinPickupHours() : this.renderMaxPickupHours()}
+        {this.renderCustomLabel('Store Hours', 'store', false)}
+        {this.state.storeActive === 1 ? this.renderMinStoreHours() : this.renderMaxStoreHours() }
       </Container>
     )
   }
-}
-
-
-const CustomLabel = (props) => {
-  return(
-    <Label>
-      <CustomText> {props.name} </CustomText>
-     { (props.isActive === true) ? <ArrowDown/> :  <ArrowLeft/>}
-    </Label>
-  )
 }
 
 
@@ -93,7 +104,7 @@ const Label = styled.div`
 
 const CustomText = styled.div`
   font-family:'Lato',sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   color: #88C640;
   font-weight: bold;
 `
