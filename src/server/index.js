@@ -50,7 +50,7 @@ app.get('/getHours', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json(results[0].hours)
+      return res.json(JSON.parse(results[0].hours))
     }
   })
 })

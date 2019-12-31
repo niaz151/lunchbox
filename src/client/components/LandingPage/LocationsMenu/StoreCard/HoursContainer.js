@@ -6,9 +6,16 @@ export default class HoursContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      hours: [],
       pickupActive:1,
       storeActive: 1
     }
+  }
+
+  componentDidMount(){
+    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getHours?branch_id=${this.props.id}`)
+    .then( res => res.json())
+    .then( hours => this.setState({hours: hours}))
   }
 
 
@@ -86,6 +93,10 @@ export default class HoursContainer extends React.Component {
 
 
   render(){
+
+    var hours = this.state.hours
+    console.log(typeof hours)
+
     return (
       <Container>
         {this.renderCustomLabel('PICKUP HOURS', 'pickup')}
