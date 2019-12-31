@@ -21,7 +21,7 @@ class LocationsMenu extends React.Component{
     var ids = []
     fetch('http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getbranchids')
     .then( res => res.json() )
-    .then( data => this.setState({branches:data}))
+    .then( data => console.log(data))
     .catch(err => console.log(err))
   }
 
@@ -38,7 +38,7 @@ class LocationsMenu extends React.Component{
   render(){
 
     var arr = []
- 
+    console.log(this.state)
 
     return(
       <Container>

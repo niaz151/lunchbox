@@ -33,7 +33,7 @@ app.get('/getBranchIds', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json(results[0].branch_id)
+      return res.json(results)
     }
   })
 })
