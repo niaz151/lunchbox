@@ -18,8 +18,11 @@ class LocationsMenu extends React.Component{
   }
 
   componentDidMount(){
-    fetch('https://localhost:3001/getBranchIds')
-    .then( (data) => console.log(data) )
+    var ids = []
+    fetch('http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getbranchids')
+    .then( res => res.json() )
+    .then( data => console.log(data.data))
+    .then(this.setState({branches: ids}))
     .catch(err => console.log(err))
   }
 

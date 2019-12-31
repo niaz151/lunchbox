@@ -34,7 +34,7 @@ app.get('/getBranchIds', (req,res) => {
     }
     else{
       return res.json({
-        data:results
+        ids:results
       })
     }
   })
@@ -53,7 +53,7 @@ app.get('/getHours', (req,res) => {
     }
     else{
       return res.json({
-        data:results[0].hours
+        hours:results[0].hours
       })
     }
   })
@@ -71,7 +71,7 @@ app.get('/getName', (req,res) => {
     }
     else{
       return res.json({
-        data:results[0].name
+        name:results[0].name
       })
     }
   })
@@ -89,14 +89,14 @@ app.get('/getAddress', (req,res) => {
     }
     else{
       return res.json({
-        data:results[0].address
+       address:results[0].address
       })
     }
   })
 })
 
 
-app.get('/getNumber', (req,res) => {
+app.get('/getPhoneNumber', (req,res) => {
 
   const {branch_id} = req.query
   const query = `SELECT phone_num FROM branches WHERE branch_id = ${branch_id}`
@@ -107,14 +107,14 @@ app.get('/getNumber', (req,res) => {
     }
     else{
       return res.json({
-        data:results[0].phone_num
+        phone_number:results[0].phone_num
       })
     }
   })
 })
 
 
-app.get('/getZip', (req,res) => {
+app.get('/getZipCode', (req,res) => {
 
   const {branch_id} = req.query
   const query = `SELECT zip_code FROM branches WHERE branch_id = ${branch_id}`
@@ -125,7 +125,7 @@ app.get('/getZip', (req,res) => {
     }
     else{
       return res.json({
-        data:results[0].zip_code
+        zip_code:results[0].zip_code
       })
     }
   })
@@ -143,7 +143,7 @@ app.get('/getState', (req,res) => {
     }
     else{
       return res.json({
-        data:results[0].state
+        state:results[0].state
       })
     }
   })
@@ -161,7 +161,7 @@ app.get('/getCity', (req,res) => {
     }
     else{
       return res.json({
-        data:results[0].city
+        city:results[0].city
       })
     }
   })
