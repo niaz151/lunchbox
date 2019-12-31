@@ -10,7 +10,7 @@ export class ContactContainer extends React.Component {
       phone_num:'',
       address:'',
       city:'',
-      state:'',
+      state_initials:'',
       zip_code:'',
       hours:[]
     }
@@ -19,7 +19,7 @@ export class ContactContainer extends React.Component {
   // DO ALL REQUIRED DB REQUESTS AND POPULATE STATE WITH DATA
   componentDidMount(){
     Promise.all([
-      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getname?branch_id=1`).then( res => res.json()), 
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getname?branch_id=${this.props.id}`).then( res => res.json()), 
       fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getphonenumber?branch_id=${this.props.id}`).then( res => res.json()),
       fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getaddress?branch_id=${this.props.id}`).then( res => res.json()),
       fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getcity?branch_id=${this.props.id}`).then( res => res.json()),
@@ -32,7 +32,7 @@ export class ContactContainer extends React.Component {
       phone_num: phone_num,
       address: address,
       city: city,
-      state: state,
+      state_initials: state,
       zip_code: zip_code,
       hours:hours
     }))
@@ -40,11 +40,10 @@ export class ContactContainer extends React.Component {
   }
 
   render(){
-    console.log(this.state)
     return(
       <Container>
         <TitleContainer>
-          <CustomTitle> CHELSEA </CustomTitle>
+          <CustomTitle> {this.state.name} </CustomTitle>
           <CustomBtn tabindex="1" type='button'> ORDER </CustomBtn> 
         </TitleContainer>
         <PhoneContainer>
@@ -52,7 +51,7 @@ export class ContactContainer extends React.Component {
         </PhoneContainer>
         <AddressContainer>
           <CustomText> {this.state.address} </CustomText> 
-          <CustomText> Brooklyn, NY 11208 </CustomText> 
+          <CustomText> {this.state.city}, {this.state.state_initials} {this.state.zip_code} </CustomText> 
         </AddressContainer>
       </Container>
   )}
