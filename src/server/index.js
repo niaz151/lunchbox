@@ -50,7 +50,7 @@ app.get('/getPickupHours', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json(JSON.parse(results[0].hours))
+      return res.json(JSON.parse(results[0].pickup_hours))
     }
   })
 })
@@ -66,7 +66,7 @@ app.get('/getStoreHours', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json(JSON.parse(results[0].hours))
+      return res.json(JSON.parse(results[0].store_hours))
     }
   })
 })
