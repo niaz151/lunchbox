@@ -17,11 +17,12 @@ class LocationsMenu extends React.Component{
     }
   }
 
+  // POPULATE STATE WITH BRANCH ID TO MAKE ALL NEEDED REQUESTS
   componentDidMount(){
     var ids = []
     fetch('http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getbranchids')
     .then( res => res.json() )
-    .then( data => console.log(data))
+    .then( branches => this.setState({branches}))
     .catch(err => console.log(err))
   }
 
@@ -37,8 +38,11 @@ class LocationsMenu extends React.Component{
 
   render(){
 
-    var arr = []
-    console.log(this.state)
+    // STORE ARR OF STORE CARDS AND PASS BRANCH ID PROP
+    var store_card_arr = []
+    this.state.branches.map( (branch) => {
+      store_card_arr.push(<StoreCard id={branch.branch_id} key={branch.branch_id} />)
+    })
 
     return(
       <Container>
@@ -48,8 +52,7 @@ class LocationsMenu extends React.Component{
         </MenuHeader>
         {this.renderMenuNavOptionComponent()}
         <CardContainer>
-          <StoreCard/>
-          <StoreCard/>
+          {store_card_arr}
         </CardContainer>
       </Container>
     )

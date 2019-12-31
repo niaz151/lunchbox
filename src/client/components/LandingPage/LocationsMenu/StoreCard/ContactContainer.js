@@ -1,23 +1,83 @@
 import React from 'react';
 import styled, {createGlobalStyle} from 'styled-components';
 
-export const ContactContainer = () => {
-  return(
-    <Container>
-      <TitleContainer>
-        <CustomTitle> CHELSEA </CustomTitle>
-        <CustomBtn tabindex="1" type='button'> ORDER </CustomBtn> 
-      </TitleContainer>
-      <PhoneContainer>
-        <CustomPhoneNum> 212-627-2808 </CustomPhoneNum> 
-      </PhoneContainer>
-      <AddressContainer>
-        <CustomText> 345 Chambers St. </CustomText> 
-        <CustomText> Brooklyn, NY 11208 </CustomText> 
-      </AddressContainer>
-    </Container>
+export class ContactContainer extends React.Component {
 
-  )
+  constructor(props){
+    super(props)
+    this.state = {
+      name:'',
+      phone_num:'',
+      address:'',
+      city:'',
+      state:'',
+      zip_code:'',
+      hours:[]
+    }
+  }
+
+  componentDidMount(){
+    
+  }
+
+  getName(){
+    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getname?branch_id=${this.props.id}`)
+    .then( res => res.json())
+    .then( name => this.setState({name:name}))
+    .catch( err => console.log(err))
+  }
+
+  getPhoneNum(){
+    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getphonenumber?branch_id=${this.props.id}`)
+    .then( res => res.json())
+    .then( phone_num => this.setState({phone_num:phone_num}))
+    .catch( err => console.log(err))
+  }
+
+  getAddress(){
+    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getaddress?branch_id=${this.props.id}`)
+    .then( res => res.json())
+    .then( address => this.setState({address:address}))
+    .catch( err => console.log(err))
+  }
+
+  getCity(){
+    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getcity?branch_id=${this.props.id}`)
+    .then( res => res.json())
+    .then( city => this.setState({city:city}))
+    .catch( err => console.log(err))
+  }
+
+  getState(){
+    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getstate?branch_id=${this.props.id}`)
+    .then( res => res.json())
+    .then( state => this.setState({state:state}))
+    .catch( err => console.log(err))
+  }
+
+  getZip(){
+    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getstate?branch_id=${this.props.id}`)
+    .then( res => res.json())
+    .then( zip_code => this.setState({zip_code:zip_code}))
+    .catch( err => console.log(err))
+  }
+
+  render(){
+    return(
+      <Container>
+        <TitleContainer>
+          <CustomTitle> CHELSEA </CustomTitle>
+          <CustomBtn tabindex="1" type='button'> ORDER </CustomBtn> 
+        </TitleContainer>
+        <PhoneContainer>
+          <CustomPhoneNum> 212-627-2808 </CustomPhoneNum> 
+        </PhoneContainer>
+        <AddressContainer>
+          <CustomText> 345 Chambers St. </CustomText> 
+          <CustomText> Brooklyn, NY 11208 </CustomText> 
+        </AddressContainer>
+      </Container>
+  )}
 }
 
 const Container = styled.div`
