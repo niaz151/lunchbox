@@ -6,16 +6,24 @@ export default class HoursContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      hours: [],
+      pickup_hours: [],
+      store_hours: [],
       pickupActive:1,
       storeActive: 1
     }
   }
 
   componentDidMount(){
-    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getHours?branch_id=${this.props.id}`)
-    .then( res => res.json())
-    .then( hours => this.setState({hours: hours}))
+    Promise.all([
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getPickupHours?branch_id=${this.props.id}`).then( res => res.json()),
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getStoreHours?branch_id=${this.props.id}`).then( res => res.json())
+    ])
+    .then ( ([pickup_hours, store_hours]) => {
+      this.setState({
+        pickup_hours: pickup_hours,
+        store_hours: store_hours
+      })
+    })
   }
 
 
@@ -95,7 +103,8 @@ export default class HoursContainer extends React.Component {
   render(){
 
     var hours = this.state.hours
-    console.log(typeof hours)
+    var day = new Date().getDay()
+
 
     return (
       <Container>

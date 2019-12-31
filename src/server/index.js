@@ -40,10 +40,26 @@ app.get('/getBranchIds', (req,res) => {
 
 
 
-app.get('/getHours', (req,res) => {
+app.get('/getPickupHours', (req,res) => {
 
   const {branch_id} = req.query
-  const query = `SELECT hours FROM branches WHERE branch_id = ${branch_id}`
+  const query = `SELECT pickup_hours FROM branches WHERE branch_id = ${branch_id}`
+  
+  db.query(query, (err,results) => {
+    if(err){
+      res.send(err)
+    }
+    else{
+      return res.json(JSON.parse(results[0].hours))
+    }
+  })
+})
+
+
+app.get('/getStoreHours', (req,res) => {
+
+  const {branch_id} = req.query
+  const query = `SELECT store_hours FROM branches WHERE branch_id = ${branch_id}`
   
   db.query(query, (err,results) => {
     if(err){
