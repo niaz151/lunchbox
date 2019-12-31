@@ -33,9 +33,7 @@ app.get('/getBranchIds', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json({
-        ids:results
-      })
+      return res.json(results[0].branch_id)
     }
   })
 })
@@ -52,9 +50,7 @@ app.get('/getHours', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json({
-        hours:results[0].hours
-      })
+      return res.json(results[0].hours)
     }
   })
 })
@@ -70,9 +66,7 @@ app.get('/getName', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json({
-        name:results[0].name
-      })
+      return res.json(results[0].name)
     }
   })
 })
@@ -88,9 +82,7 @@ app.get('/getAddress', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json({
-       address:results[0].address
-      })
+      return res.json(results[0].address)
     }
   })
 })
@@ -106,9 +98,7 @@ app.get('/getPhoneNumber', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json({
-        phone_number:results[0].phone_num
-      })
+      return res.json(results[0].phone_num)
     }
   })
 })
@@ -124,9 +114,7 @@ app.get('/getZipCode', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json({
-        zip_code:results[0].zip_code
-      })
+      return res.json(results[0].zip_code)
     }
   })
 })
@@ -142,9 +130,7 @@ app.get('/getState', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json({
-        state:results[0].state
-      })
+      return res.json(results[0].state)
     }
   })
 })
