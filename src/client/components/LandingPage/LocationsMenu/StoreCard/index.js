@@ -8,8 +8,8 @@ class StoreCard extends React.Component{
   render(){
     return(
       <Container>
-        <ContactContainer/>
-        <HoursContainer/>
+        <ContactContainer id={this.props.id} />
+        <HoursContainer id={this.props.id} />
       </Container>
     )
   }

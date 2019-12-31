@@ -43,7 +43,7 @@ class LocationsMenu extends React.Component{
     this.state.branches.map( (branch) => {
       store_card_arr.push(<StoreCard id={branch.branch_id} key={branch.branch_id} />)
     })
-
+    
     return(
       <Container>
         <MenuHeader>

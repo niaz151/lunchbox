@@ -16,53 +16,31 @@ export class ContactContainer extends React.Component {
     }
   }
 
+  // DO ALL REQUIRED DB REQUESTS AND POPULATE STATE WITH DATA
   componentDidMount(){
-    
-  }
-
-  getName(){
-    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getname?branch_id=${this.props.id}`)
-    .then( res => res.json())
-    .then( name => this.setState({name:name}))
-    .catch( err => console.log(err))
-  }
-
-  getPhoneNum(){
-    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getphonenumber?branch_id=${this.props.id}`)
-    .then( res => res.json())
-    .then( phone_num => this.setState({phone_num:phone_num}))
-    .catch( err => console.log(err))
-  }
-
-  getAddress(){
-    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getaddress?branch_id=${this.props.id}`)
-    .then( res => res.json())
-    .then( address => this.setState({address:address}))
-    .catch( err => console.log(err))
-  }
-
-  getCity(){
-    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getcity?branch_id=${this.props.id}`)
-    .then( res => res.json())
-    .then( city => this.setState({city:city}))
-    .catch( err => console.log(err))
-  }
-
-  getState(){
-    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getstate?branch_id=${this.props.id}`)
-    .then( res => res.json())
-    .then( state => this.setState({state:state}))
-    .catch( err => console.log(err))
-  }
-
-  getZip(){
-    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getstate?branch_id=${this.props.id}`)
-    .then( res => res.json())
-    .then( zip_code => this.setState({zip_code:zip_code}))
-    .catch( err => console.log(err))
+    Promise.all([
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getname?branch_id=1`).then( res => res.json()), 
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getphonenumber?branch_id=${this.props.id}`).then( res => res.json()),
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getaddress?branch_id=${this.props.id}`).then( res => res.json()),
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getcity?branch_id=${this.props.id}`).then( res => res.json()),
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getstate?branch_id=${this.props.id}`).then( res => res.json()),
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getZipCode?branch_id=${this.props.id}`).then( res => res.json()),
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getHours?branch_id=${this.props.id}`).then( res => res.json())
+    ])
+    .then( ([name, phone_num, address, city, state, zip_code, hours ]) => this.setState({
+      name:name,
+      phone_num: phone_num,
+      address: address,
+      city: city,
+      state: state,
+      zip_code: zip_code,
+      hours:hours
+    }))
+    .catch( err => console.log(err))                                  
   }
 
   render(){
+    console.log(this.state)
     return(
       <Container>
         <TitleContainer>
@@ -70,10 +48,10 @@ export class ContactContainer extends React.Component {
           <CustomBtn tabindex="1" type='button'> ORDER </CustomBtn> 
         </TitleContainer>
         <PhoneContainer>
-          <CustomPhoneNum> 212-627-2808 </CustomPhoneNum> 
+          <CustomPhoneNum> {this.state.phone_num} </CustomPhoneNum> 
         </PhoneContainer>
         <AddressContainer>
-          <CustomText> 345 Chambers St. </CustomText> 
+          <CustomText> {this.state.address} </CustomText> 
           <CustomText> Brooklyn, NY 11208 </CustomText> 
         </AddressContainer>
       </Container>

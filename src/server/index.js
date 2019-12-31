@@ -146,9 +146,7 @@ app.get('/getCity', (req,res) => {
       res.send(err)
     }
     else{
-      return res.json({
-        city:results[0].city
-      })
+      return res.json(results[0].city)
     }
   })
 })
