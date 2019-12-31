@@ -26,41 +26,55 @@ export default class HoursContainer extends React.Component {
     })
   }
 
-
-  renderMinPickupHours = () => {
-    return(
-      <Hours>
-        <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
-      </Hours>
-    )
+  getDayString(num){
+    switch(num){
+      case 0 : return 'Sun'
+      case 1 : return 'Mon'
+      case 2 : return'Tues'
+      case 3 : return 'Wed'
+      case 4 : return 'Thurs'
+      case 5 : return 'Fri'
+      case 6 : return 'Sat'
+      default:
+        break;
+    }
   }
 
-  renderMaxPickupHours = () => {
-    return(
-      <Hours>
-        <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Mon: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Tues: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Wed: 12:00 PM - 5:00 PM </HoursText>
-      </Hours>
-    )
-  }
+  renderDailyHours = (type) => {
 
-  renderMinStoreHours = () => {
-    return(
-      <Hours>
-        <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
-      </Hours>
-    )
-  }
+    var hours, output
+    var day_num = new Date().getDay();
+    var day_word = this.getDayString(day_num);
 
-  renderMaxStoreHours = () => {
+    (type === 'pickup') ? hours = this.state.pickup_hours : hours = this.state.store_hours
+
+    if(hours.length > 0)(
+      output = 
+        <Hours>
+          <HoursText> {day_word}: {hours[day_num][day_word].open} {hours[day_num][day_word].close} </HoursText>
+        </Hours>
+    )
+    return output
+  }
+  
+
+  renderAllHours = (type) => {
+
+    var hours, day_word
+    var output = [];
+
+    (type === 'pickup' ? hours = this.state.pickup_hours : hours = this.state.store_hours)
+
+    if(hours.length > 0){
+      for(var i = 0; i < hours.length; i++){
+        day_word = this.getDayString(i)
+        output.push(<HoursText> {day_word}: {hours[i][day_word].open} {hours[i][day_word].close} </HoursText>)
+      }
+    }
+
     return(
       <Hours>
-        <HoursText> Sun: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Mon: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Tues: 12:00 PM - 5:00 PM </HoursText>
-        <HoursText> Wed: 12:00 PM - 5:00 PM </HoursText>
+        {output}
       </Hours>
     )
   }
@@ -79,17 +93,12 @@ export default class HoursContainer extends React.Component {
   }
 
 
-  // RENDER ARROW TYPE DEPENDING ON STATE
+  // RENDER ARROW TYPE DEPENDING ON BINARY STATE
   renderCustomLabel = (text,type) => {
 
     var arrow_status
 
-    if(type === 'pickup'){
-      arrow_status = this.state.pickupActive
-    }
-    else{
-      arrow_status = this.state.storeActive
-    }
+    (type === 'pickup' ? arrow_status = this.state.pickupActive : arrow_status = this.state.storeActive)
 
     return(
       <Label onClick={type === 'pickup' ?  () => this.handleLabelClick('pickup') :  () => this.handleLabelClick('store') } >
@@ -101,22 +110,16 @@ export default class HoursContainer extends React.Component {
 
 
   render(){
-
-    var hours = this.state.hours
-    var day = new Date().getDay()
-
-
     return (
       <Container>
         {this.renderCustomLabel('PICKUP HOURS', 'pickup')}
-        {this.state.pickupActive === 1 ? this.renderMinPickupHours() : this.renderMaxPickupHours()}
+        {this.state.pickupActive === 1 ? this.renderDailyHours('pickup') : this.renderAllHours('pickup')}
         {this.renderCustomLabel('STORE HOURS', 'store')}
-        {this.state.storeActive === 1 ? this.renderMinStoreHours() : this.renderMaxStoreHours() }
+        {this.state.storeActive === 1 ? this.renderDailyHours('store') : this.renderAllHours('store') }
       </Container>
     )
   }
 }
-
 
 const Container = styled.div`
   width: 100%;

@@ -12,7 +12,8 @@ export class ContactContainer extends React.Component {
       city:'',
       state_initials:'',
       zip_code:'',
-      hours:[]
+      pickup_hours:[],
+      store_hours:[]
     }
   }
 
@@ -25,21 +26,24 @@ export class ContactContainer extends React.Component {
       fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getcity?branch_id=${this.props.id}`).then( res => res.json()),
       fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getstate?branch_id=${this.props.id}`).then( res => res.json()),
       fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getZipCode?branch_id=${this.props.id}`).then( res => res.json()),
-      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getHours?branch_id=${this.props.id}`).then( res => res.json())
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getPickupHours?branch_id=${this.props.id}`).then( res => res.json()),
+      fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getStoreHours?branch_id=${this.props.id}`).then( res => res.json())
     ])
-    .then( ([name, phone_num, address, city, state, zip_code, hours ]) => this.setState({
+    .then( ([name, phone_num, address, city, state, zip_code, pickup_hours, store_hours ]) => this.setState({
       name:name,
       phone_num: phone_num,
       address: address,
       city: city,
       state_initials: state,
       zip_code: zip_code,
-      hours:hours
+      pickup_hours: pickup_hours, 
+      store_hours: store_hours
     }))
     .catch( err => console.log(err))                                  
   }
 
   render(){
+
     return(
       <Container>
         <TitleContainer>
