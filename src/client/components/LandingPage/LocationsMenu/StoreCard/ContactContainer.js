@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, {createGlobalStyle} from 'styled-components';
+import {connect} from 'react-redux';
 
-export class ContactContainer extends React.Component {
+class ContactContainer extends React.Component {
 
   constructor(props){
     super(props)
@@ -47,8 +48,8 @@ export class ContactContainer extends React.Component {
     return(
       <Container>
         <TitleContainer>
-          <CustomTitle> {this.state.name} </CustomTitle>
-          <CustomBtn tabindex="1" type='button'> ORDER </CustomBtn> 
+          <CustomTitle color={this.props.color_scheme['primary']}> {this.state.name} </CustomTitle>
+          <CustomBtn tabindex="1" type='button' color={this.props.color_scheme['secondary']} > ORDER </CustomBtn> 
         </TitleContainer>
         <PhoneContainer>
           <CustomPhoneNum> {this.state.phone_num} </CustomPhoneNum> 
@@ -82,7 +83,7 @@ const TitleContainer = styled.div`
 `
 
 const CustomTitle = styled.div`
-  color: #E8467F;
+  color: ${props => props.color};
   font-family: 'Lato', sans-serif;
   font-size: 18px;
   display:flex;
@@ -93,14 +94,14 @@ const CustomTitle = styled.div`
 const CustomBtn = styled.div`
   height: 35px;
   width: 112px;
-  border: 3px solid #565656;
+  border: 3px solid ${props => props.color};
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
   border-radius: 4px;
   font-family: 'Lato', sans-serif;
-  color: #565656;
+  color: ${props => props.color};
   font-weight:bold;
 
   &:hover{
@@ -108,7 +109,6 @@ const CustomBtn = styled.div`
     color:white;
   }
 `
-
 const PhoneContainer = styled.div`
   height: 20%;
   width: calc(100% - 30px);
@@ -132,8 +132,15 @@ const AddressContainer = styled.div`
   justify-content:center;
   margin-top:10px;
 `
-
 const CustomText = styled.div`
   font-family:'Lato',sans-serif;
   font-size:14px;
 `
+
+function mapStateToProps(state){
+  return({
+    color_scheme:state.color_scheme
+  })
+}
+
+export default connect(mapStateToProps,null)(ContactContainer);

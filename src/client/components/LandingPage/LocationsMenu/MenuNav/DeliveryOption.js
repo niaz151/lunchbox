@@ -1,5 +1,7 @@
 import React from 'react';
 import styled, {createGlobalStyle} from 'styled-components';
+import {connect} from 'react-redux';
+
 class DeliveryOption extends React.Component{
 
   render(){
@@ -15,7 +17,7 @@ class DeliveryOption extends React.Component{
            <RightFormInput type='text' placeholder='Optional'/>
         </FormInputContainer>
         <BtnContainer>
-          <Btn color="#E8467F">
+          <Btn color={this.props.color_scheme['primary']}>
             Search
           </Btn>
         </BtnContainer>
@@ -54,7 +56,6 @@ const FormLeftSpan = styled(FormSpan)`
 const FormRightSpan = styled(FormSpan)`
   margin-right: 20px;
 `
-
 const FormInputContainer = styled.div`
   height: 30%;
   width: 100%;
@@ -69,7 +70,6 @@ const FormInput = styled.input`
   font-family: 'Lato',sans-serif;
   font-size: 15px;
 `
-
 const LeftFormInput = styled(FormInput)`
   margin-left:20px;
   width: 60%;
@@ -86,7 +86,6 @@ const BtnContainer = styled.div`
   align-items:center;
   justify-content:center;
 `
-
 const Btn = styled.button`
   height: 60%;
   width: 80%;
@@ -97,4 +96,10 @@ const Btn = styled.button`
   font-weight: 600;
 `
 
-export default DeliveryOption;
+function mapStateToProps(state){
+  return({
+    color_scheme: state.color_scheme
+  })
+}
+
+export default connect(mapStateToProps,null)(DeliveryOption);

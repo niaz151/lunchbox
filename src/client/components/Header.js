@@ -1,17 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import {connect} from 'react-redux';
 
-const Header = () => (
-  <HeaderContainer color='#E8467F'>
-    <LogoContainer>
-      <img src='https://assets.lunchbox.io/16-handles/images/art_logo.svg' alt='' />
-    </LogoContainer>
-    <LoginContainer>
-      <img src='https://assets.lunchbox.io/16-handles/images/icon_login.svg' alt='' />
-      <span> LOGIN </span> 
-    </LoginContainer>
-  </HeaderContainer>
-)
+class Header extends React.Component {
+
+  render(){
+    
+    return(
+      <HeaderContainer color={this.props.color_scheme['primary']}>
+        <LogoContainer>
+          <img src='https://assets.lunchbox.io/16-handles/images/art_logo.svg' alt='' />
+        </LogoContainer>
+        <LoginContainer>
+          <img src='https://assets.lunchbox.io/16-handles/images/icon_login.svg' alt='' />
+          <span> LOGIN </span> 
+        </LoginContainer>
+      </HeaderContainer>
+    )
+  }
+}
 
 const HeaderContainer = styled.div`
   height: 75px;
@@ -40,5 +47,10 @@ const LoginContainer = styled.div`
   cursor:pointer
 `
 
+function mapStateToProps(state){
+  return({
+    color_scheme: state.color_scheme
+  })
+}
 
-export default Header;
+export default connect(mapStateToProps, null)(Header);

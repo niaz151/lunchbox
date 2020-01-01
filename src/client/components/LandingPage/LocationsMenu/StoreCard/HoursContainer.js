@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import {connect} from 'react-redux';
 
-export default class HoursContainer extends React.Component {
+class HoursContainer extends React.Component {
   
   constructor(props){
     super(props)
@@ -102,7 +103,7 @@ export default class HoursContainer extends React.Component {
 
     return(
       <Label onClick={type === 'pickup' ?  () => this.handleLabelClick('pickup') :  () => this.handleLabelClick('store') } >
-        <CustomText> {text} </CustomText>
+        <CustomText color={this.props.color_scheme['tertiary']}> {text} </CustomText>
         { (arrow_status === 1) ? <ArrowLeft/> :  <ArrowDown/>}
       </Label>
     )
@@ -142,7 +143,7 @@ const Label = styled.div`
 const CustomText = styled.div`
   font-family:'Lato',sans-serif;
   font-size: 16px;
-  color: #88C640;
+  color: ${props => props.color} ;
   font-weight: bold;
 `
 const Hours = styled.div`
@@ -176,3 +177,11 @@ const ArrowDown = styled(Arrow)`
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 `
+
+function mapStateToProps(state){
+  return({
+    color_scheme:state.color_scheme
+  })
+}
+
+export default connect(mapStateToProps,null)(HoursContainer);
