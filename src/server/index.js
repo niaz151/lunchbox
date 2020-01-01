@@ -200,6 +200,25 @@ app.get('/login', (req,res) => {
   })
 })
 
+
+app.get('/getColorScheme', (req,res) => {
+
+  const {branch_id} = req.query
+  const query = `SELECT color_scheme FROM branches WHERE branch_id = ${branch_id}`
+
+  db.query(query, (err,results) => {
+    if(err){
+      res.send(err)
+    }
+    else{
+      if( res.json(results[0].password) === password){
+        return res.json(results[0].color_scheme)
+      }
+    }
+  })
+})
+
+
 app.listen('3001', () => {
   console.log('server started on port 3001')
 })
