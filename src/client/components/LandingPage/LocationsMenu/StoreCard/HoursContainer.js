@@ -51,7 +51,7 @@ export default class HoursContainer extends React.Component {
     if(hours.length > 0)(
       output = 
         <Hours>
-          <HoursText> {day_word}: {hours[day_num][day_word].open} {hours[day_num][day_word].close} </HoursText>
+          <HoursText> {day_word}: {hours[day_num][day_word].open} - {hours[day_num][day_word].close} </HoursText>
         </Hours>
     )
     return output
@@ -68,7 +68,7 @@ export default class HoursContainer extends React.Component {
     if(hours.length > 0){
       for(var i = 0; i < hours.length; i++){
         day_word = this.getDayString(i)
-        output.push(<HoursText> {day_word}: {hours[i][day_word].open} {hours[i][day_word].close} </HoursText>)
+        output.push(<HoursText> {day_word}: {hours[i][day_word].open} - {hours[i][day_word].close} </HoursText>)
       }
     }
 
