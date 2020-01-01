@@ -211,9 +211,7 @@ app.get('/getColorScheme', (req,res) => {
       res.send(err)
     }
     else{
-      if( res.json(results[0].password) === password){
-        return res.json(results[0].color_scheme)
-      }
+      return res.json(results[0].color_scheme)
     }
   })
 })
