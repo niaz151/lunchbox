@@ -9,9 +9,9 @@
  
  Node (Express, Nodemon)
 
- AWS ( MYSQL DB, EC2, Nginx)
+ AWS ( MYSQL RDS, EC2, Nginx)
  
- Jenkins (Github Integraton)
+ Jenkins (Github Webhook. Nginx Provider)
 
 
 
