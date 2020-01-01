@@ -1,6 +1,6 @@
-export const getColorScheme = (store_id) => {
+export const addColorScheme = (scheme) => {
   return({
-    type:'GET_COLOR_SCHEME',
-    payload: store_id
+    type:'ADD_COLOR_SCHEME',
+    payload: scheme
   })
 }
