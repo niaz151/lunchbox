@@ -39,7 +39,6 @@ app.get('/getBranchIds', (req,res) => {
 })
 
 
-
 app.get('/getPickupHours', (req,res) => {
 
   const {branch_id} = req.query
@@ -167,6 +166,39 @@ app.get('/getCity', (req,res) => {
   })
 })
 
+
+app.get('/addUser', (req,res) => {
+
+  const {email,password} = req.query
+  const query = `INSERT INTO users (email,address) VALUES (${email}, ${password})`
+
+  db.query(query, (err) => {
+    if(err){
+      res.send(err)
+    }
+    else{
+      console.log('Succesfully Added User')
+    }
+  })
+})
+
+
+app.get('/login', (req,res) => {
+
+  const {email,password} = req.query
+  const query = `SELECT password FROM users WHERE email = ${email}`
+
+  db.query(query, (err,results) => {
+    if(err){
+      res.send(err)
+    }
+    else{
+      if( res.json(results[0].password) === password){
+        console.log('Verified User Details')
+      }
+    }
+  })
+})
 
 app.listen('3001', () => {
   console.log('server started on port 3001')
