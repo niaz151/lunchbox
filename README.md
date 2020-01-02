@@ -26,3 +26,10 @@
  3. Switching between login/signup options causes component to flash
  
  4. Forget password functionality not working
+
+
+### TO BE ADDED ###
+
+1. Component Render Animations
+
+2. Form REGEX
