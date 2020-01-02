@@ -202,15 +202,15 @@ app.get('/login', (req,res) => {
         // EMAIL MATCHES BUT NOT USERNAME
         if( param_password === db_password){
           console.log('User Verified')
-          res.json({isLoggedIn:true})
+          return res.json({isLoggedIn:true})
         }
         else{
           console.log('Wrong Password')
-          res.json({isLogginIn: false})
+          return res.json({isLogginIn: false})
         }
       }
       else{
-        console.log('User Not Found')
+        return console.log('User Not Found')
       }
     }
   })
