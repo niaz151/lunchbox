@@ -25,3 +25,10 @@ export const renderLoginComponent = (type) => {
     payload: type
   })
 }
+
+export const handleLogin = (val) => {
+  return({
+    type: 'HANDLE_LOGIN',
+    payload: val
+  })
+}

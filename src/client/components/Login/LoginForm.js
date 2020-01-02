@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
+import {dispatch} from 'redux';
+import {handleLogin} from '../../redux/actions/index';
+import { bindActionCreators } from 'redux';
 
 class LoginForm extends React.Component{
 
@@ -17,7 +20,7 @@ class LoginForm extends React.Component{
     e.preventDefault()
     fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/login/?email="${this.state.email}"&password="${this.state.password}"`)
     .then( res => res.json())
-    .then( data => console.log(data))
+    .then( data => console.log(data.isLoggedIn))
     .catch( err => console.log(err))
   }
 
@@ -86,8 +89,15 @@ const CustomButton = styled.button`
 
 function mapStateToProps(state){
   return({
-    color_scheme: state.color_scheme
+    color_scheme: state.color_scheme,
+    isLoggedIn: state.isLoggedIn
   })
 }
 
-export default connect(mapStateToProps, null)(LoginForm);
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({
+    handle_login: handleLogin
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(LoginForm);

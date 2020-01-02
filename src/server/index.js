@@ -211,7 +211,7 @@ app.get('/login', (req,res) => {
       }
       else{
         console.log('User Not Found')
-        return res.json({isLogginIn: false})
+        return res.json({isLoggedIn: false})
       }
     }
   })
