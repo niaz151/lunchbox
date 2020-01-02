@@ -16,7 +16,7 @@ class LoginForm extends React.Component{
   handleBtnClick = (e) => {
     e.preventDefault()
     fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/login/?email="${this.state.email}"&password="${this.state.password}"`)
-    .then( res => res.json() )
+    .then( res => console.log(res))
     .then( data => console.log(data))
     .catch( err => console.log(err))
   }
@@ -26,7 +26,6 @@ class LoginForm extends React.Component{
       [e.target.name]: `${e.target.value}`
     })
   }
-
 
   render(){
     return(

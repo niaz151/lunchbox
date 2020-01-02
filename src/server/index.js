@@ -197,7 +197,8 @@ app.get('/login', (req,res) => {
       var db_password = results[0].password
 
       if( param_password === db_password){
-        console.log('Verified User Details')
+        console.log('User Verified')
+        res.send({isLoggedIn:true})
       }
       else{
         console.log('User Not Found')
