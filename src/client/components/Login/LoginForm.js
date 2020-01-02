@@ -20,7 +20,7 @@ class LoginForm extends React.Component{
     e.preventDefault()
     fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/login/?email="${this.state.email}"&password="${this.state.password}"`)
     .then( res => res.json())
-    .then( data => console.log(data.isLoggedIn))
+    .then( data => this.props.handle_login(data.isLoggedIn))
     .catch( err => console.log(err))
   }
 
