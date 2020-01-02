@@ -14,13 +14,16 @@ class SignupForm extends React.Component{
     }
   }
 
-  handleBtnClick = () => {
-    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/addUser/?first_name=${this.state.first_name}`)
+  handleBtnClick = (e) => {
+    e.preventDefault()
+    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/addUser/?first_name="${this.state.first_name}"&last_name="${this.state.last_name}"&email="${this.state.email}"&password="${this.password}"`)
+    .then( alert('done') )
+    .catch( err => console.log(err))
   }
 
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: `${e.target.value}`
     })
   }
 
@@ -43,7 +46,7 @@ class SignupForm extends React.Component{
           <Label> Password </Label>
           <CustomInput placeholder='Enter Password Here' name="password" />
         </ItemContainer> 
-        <CustomButton color={this.props.color_scheme['primary']} > SIGN UP </CustomButton>
+        <CustomButton color={this.props.color_scheme['primary']} onClick={this.handleBtnClick} > SIGN UP </CustomButton>
     </FormContainer>
     )
   }

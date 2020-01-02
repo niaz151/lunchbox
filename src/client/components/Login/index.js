@@ -12,9 +12,11 @@ class Login extends React.Component{
     this.props.hideLogin()
   }
 
-  alterComponent = () => {
-    var type = this.props.active_component
-    this.props.renderComponent(-type)
+  alterComponent = (new_type) => {
+    var old_type = this.props.active_component
+    if(new_type != old_type){
+      this.props.renderComponent(- old_type)
+    }
   }
 
   render(){
@@ -33,7 +35,7 @@ class Login extends React.Component{
             active_color={this.props.color_scheme['primary']} 
             active={this.props.active_component === 1}
             inactive_color='#717171'
-            onClick={this.alterComponent}
+            onClick={() => this.alterComponent(1)}
           > 
             LOGIN 
           </NavOption>
@@ -42,7 +44,7 @@ class Login extends React.Component{
             active_color={this.props.color_scheme['primary']} 
             active={this.props.active_component === -1}
             inactive_color='#717171'
-            onClick={this.alterComponent}
+            onClick={() => this.alterComponent(-1)}
           > 
             SIGN UP 
           </NavOption>
