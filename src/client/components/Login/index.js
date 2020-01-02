@@ -20,12 +20,14 @@ class Login extends React.Component{
   render(){
     return(
       <Container>
+
         <DescriptionContainer>
           <ArrowContainer color={this.props.color_scheme['primary']} onClick={this.handleBackNav} >
             <Arrow/> 
           </ArrowContainer>
           <DescriptionText color={this.props.color_scheme['secondary']} > LOGIN &nbsp; OR &nbsp;  SIGN UP </DescriptionText>
         </DescriptionContainer>
+
         <NavOptionsContainer>
           <NavOption 
             active_color={this.props.color_scheme['primary']} 
@@ -35,6 +37,7 @@ class Login extends React.Component{
           > 
             LOGIN 
           </NavOption>
+
           <NavOption 
             active_color={this.props.color_scheme['primary']} 
             active={this.props.active_component === -1}
@@ -44,6 +47,7 @@ class Login extends React.Component{
             SIGN UP 
           </NavOption>
         </NavOptionsContainer>
+
         {this.props.active_component === 1 ? <LoginForm/> : <SignupForm/>}
       </Container>
     )
@@ -56,7 +60,6 @@ const Container = styled.div`
   width: 38%;
   top: 0;
   right: 0;
-  border: 1px solid black;
   background-color:white;
 
   @media(max-width: 1200px){

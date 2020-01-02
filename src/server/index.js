@@ -169,8 +169,8 @@ app.get('/getCity', (req,res) => {
 
 app.get('/addUser', (req,res) => {
 
-  const {email,password} = req.query
-  const query = `INSERT INTO users (email,address) VALUES (${email}, ${password})`
+  const {first_name, last_name, email, password} = req.query
+  const query = `INSERT INTO users (first_name, last_name, email, password) VALUES (${first_name}, ${last_name}, ${email}, ${password})`
 
   db.query(query, (err) => {
     if(err){
