@@ -11,3 +11,10 @@ export const showLoginMenu = () => {
     payload: true
   })
 }
+
+export const hideLoginMenu = () => {
+  return({
+    type: 'HIDE_LOGIN_MENU',
+    payload: false
+  })
+}

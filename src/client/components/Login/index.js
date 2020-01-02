@@ -1,15 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
-
+import {bindActionCreators} from 'redux';
+import {hideLoginMenu} from '../../redux/actions/index';
 
 class Login extends React.Component{
+
+  handleBackNav = () => {
+    this.props.hideLogin()
+  }
 
   render(){
     return(
       <Container>
         <DescriptionContainer>
-          <ArrowContainer color={this.props.color_scheme['primary']} >
+          <ArrowContainer color={this.props.color_scheme['primary']} onClick={this.handleBackNav} >
             <Arrow/> 
           </ArrowContainer>
           <DescriptionText color={this.props.color_scheme['secondary']} > LOGIN &nbsp; OR &nbsp;  SIGN UP </DescriptionText>
@@ -119,4 +124,11 @@ const Arrow = styled.i`
     })
   }
 
-export default connect(mapStateToProps,null)(Login);
+  function matchDispatchToProps(dispatch){
+    return bindActionCreators({
+      hideLogin: hideLoginMenu
+    }, dispatch)
+  }
+  
+
+export default connect(mapStateToProps, matchDispatchToProps)(Login);
