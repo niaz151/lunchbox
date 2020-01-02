@@ -2,12 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {hideLoginMenu} from '../../redux/actions/index';
+import {hideLoginMenu, renderLoginComponent} from '../../redux/actions/index';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 
 class Login extends React.Component{
 
   handleBackNav = () => {
     this.props.hideLogin()
+  }
+
+  alterComponent = () => {
+    var type = this.props.active_component
+    this.props.renderComponent(-type)
   }
 
   render(){
@@ -22,19 +29,22 @@ class Login extends React.Component{
         <NavOptionsContainer>
           <NavOption 
             active_color={this.props.color_scheme['primary']} 
-            active={true}
+            active={this.props.active_component === 1}
             inactive_color='#717171'
+            onClick={this.alterComponent}
           > 
             LOGIN 
           </NavOption>
           <NavOption 
             active_color={this.props.color_scheme['primary']} 
-            active={false}
+            active={this.props.active_component === -1}
             inactive_color='#717171'
+            onClick={this.alterComponent}
           > 
             SIGN UP 
           </NavOption>
         </NavOptionsContainer>
+        {this.props.active_component === 1 ? <LoginForm/> : <SignupForm/>}
       </Container>
     )
   }
@@ -120,13 +130,15 @@ const Arrow = styled.i`
 
   function mapStateToProps(state){
     return({
-      color_scheme: state.color_scheme
+      color_scheme: state.color_scheme,
+      active_component: state.login_menu.activeComponent
     })
   }
 
   function matchDispatchToProps(dispatch){
     return bindActionCreators({
-      hideLogin: hideLoginMenu
+      hideLogin: hideLoginMenu,
+      renderComponent: renderLoginComponent
     }, dispatch)
   }
   

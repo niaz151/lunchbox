@@ -1,5 +1,6 @@
 var initial_state = {
-  isVisible: false
+  isVisible: false,
+  activeComponent: 1
 }
 
 export default (state = initial_state, action) => {
@@ -11,9 +12,13 @@ export default (state = initial_state, action) => {
       return new_state
       
     case 'HIDE_LOGIN_MENU':
-      console.log('hiden')
       var new_state = {...state}
       new_state.isVisible = false
+      return new_state
+
+    case 'RENDER_LOGIN_COMPONENT':
+      var new_state = {...state}
+      new_state.activeComponent = action.payload
       return new_state
 
     default:

@@ -18,3 +18,10 @@ export const hideLoginMenu = () => {
     payload: false
   })
 }
+
+export const renderLoginComponent = (type) => {
+  return({
+    type: 'RENDER_LOGIN_COMPONENT',
+    payload: type
+  })
+}
