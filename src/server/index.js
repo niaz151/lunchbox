@@ -193,7 +193,8 @@ app.get('/login', (req,res) => {
       res.send(err)
     }
     else{
-      console.log(res.json)
+      console.log(password)
+      console.log(res.json(results[0]))
       if( res.json(results[0].password) === password){
         console.log('Verified User Details')
       }
