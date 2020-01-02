@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {createGlobalStyle} from 'styled-components';
+import styled from 'styled-components';
 import {connect} from 'react-redux';
 
 class ContactContainer extends React.Component {
@@ -105,7 +105,7 @@ const CustomBtn = styled.div`
   font-weight:bold;
 
   &:hover{
-    background-color: #565656;
+    background-color: ${props => props.color};
     color:white;
   }
 `

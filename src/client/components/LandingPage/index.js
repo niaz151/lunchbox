@@ -1,11 +1,21 @@
 import React from 'react';
 import LocationsMenu from './LocationsMenu/index';
-import LocationsMaps from './LocationsMap/index';
 import styled from 'styled-components';
+import Login from '../Login/index';
+import {connect} from 'react-redux';
 
 class LandingPage extends React.Component{
 
+  constructor(props){
+    super(props)
+    this.state = {
+      showLoginMenu: false
+    }
+  }
   render(){
+  
+    
+   
     return(
       <Container>
         <LocationsMenu/>
@@ -19,5 +29,10 @@ const Container = styled.div`
   width: 100vw;
   display:flex;
 `
+function mapStateToProps(state){
+  return({
+    login_menu: state.login_menu
+  })
+}
 
-export default LandingPage;
+export default connect(mapStateToProps,null)(LandingPage);

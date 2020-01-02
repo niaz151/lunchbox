@@ -4,3 +4,10 @@ export const addColorScheme = (scheme) => {
     payload: scheme
   })
 }
+
+export const showLoginMenu = () => {
+  return({
+    type: 'SHOW_LOGIN_MENU',
+    payload: true
+  })
+}

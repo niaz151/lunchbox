@@ -83,12 +83,13 @@ class HoursContainer extends React.Component {
 
   // ADJUST STATE WHEN LABEL CLICKED
   handleLabelClick = (type) => {
+    var curr_hours
     if(type === 'pickup'){
-      var curr_hours = this.state.pickupActive
+      curr_hours = this.state.pickupActive
       this.setState({pickupActive: -curr_hours})
     }
     else{
-      var curr_hours = this.state.storeActive
+      curr_hours = this.state.storeActive
       this.setState({storeActive: -curr_hours})
     }
   }

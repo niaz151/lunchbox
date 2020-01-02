@@ -42,7 +42,7 @@ const CustomInput = styled.input`
 const img_styles = {
   height: "30px",
   width: "30px",
-  cursor:"pointer"
+  cursor:"pointer",
 }
 
 export default PickupOption;

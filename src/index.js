@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './client/App';
 import { createGlobalStyle } from 'styled-components';
-import {createStore, applyMiddleware, compose} from 'redux';
+import {createStore} from 'redux';
 import reducers from './client/redux/reducers'
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -20,10 +21,8 @@ const store = createStore(
 )
 
 ReactDOM.render(
-  <React.Fragment>
-  <GlobalStyle/>
-  <Provider store={store}>
-    <App/>
-  </Provider>
-  </React.Fragment>, document.getElementById('root')
+    <Provider store={store}>
+     <GlobalStyle/>
+      <App/>
+    </Provider>, document.getElementById('root')
 );

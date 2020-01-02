@@ -5,12 +5,12 @@ import {connect} from 'react-redux';
 class MenuNav extends React.Component {
 
 
-    // CLICK HANDLER AND PARENT CALLBACK
-    handleClick = (tab_num) => {
-      if(this.props.curr_tab !== tab_num){
-        this.props.handleNav()
-      }
+  // CLICK HANDLER AND PARENT CALLBACK
+  handleClick = (tab_num) => {
+    if(this.props.curr_tab !== tab_num){
+      this.props.handleNav()
     }
+  }
   
   render(){
     return(
@@ -62,8 +62,9 @@ const MenuNavSpan = styled.div`
   color: ${ props => props.active === true ? props.active_color : props.inactive_color };
   font-family: 'Lato', sans-serif;
   font-size: 18px;
-  border-bottom: ${props => props.active === true ? `4px solid ${props.active_color}` : "1px inset #D4E2D4"};
+  border-bottom: ${props => props.active === true ? `4px solid ${props.active_color}` : "2px inset #D4E2D4"};
   cursor: pointer;
+  font-weight: 600;
 `
 
 function mapStateToProps(state){

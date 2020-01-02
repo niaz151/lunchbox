@@ -1,18 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {showLoginMenu} from '../redux/actions/index';
 
 class Header extends React.Component {
 
+  handleLoginClick = () => {
+    this.props.showLoginMenu()
+  }
+
   render(){
-    
     return(
       <HeaderContainer color={this.props.color_scheme['primary']}>
         <LogoContainer>
           <img src='https://assets.lunchbox.io/16-handles/images/art_logo.svg' alt='' />
         </LogoContainer>
-        <LoginContainer>
-          <img src='https://assets.lunchbox.io/16-handles/images/icon_login.svg' alt='' />
+        <LoginContainer > 
+          <img src='https://assets.lunchbox.io/16-handles/images/icon_login.svg' alt='' onClick={this.handleLoginClick} />
           <span> LOGIN </span> 
         </LoginContainer>
       </HeaderContainer>
@@ -49,8 +54,14 @@ const LoginContainer = styled.div`
 
 function mapStateToProps(state){
   return({
-    color_scheme: state.color_scheme
+    color_scheme: state.color_scheme,
   })
 }
 
-export default connect(mapStateToProps, null)(Header);
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({
+    showLoginMenu: showLoginMenu
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Header);

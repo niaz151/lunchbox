@@ -19,7 +19,6 @@ class LocationsMenu extends React.Component{
 
   // POPULATE STATE WITH BRANCH ID TO MAKE ALL NEEDED REQUESTS
   componentDidMount(){
-    var ids = []
     fetch('http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getbranchids')
     .then( res => res.json() )
     .then( branches => this.setState({branches}))
@@ -62,7 +61,6 @@ class LocationsMenu extends React.Component{
 const Container = styled.div`
   height: 100%;
   width: 32%;
-  border-right:1px solid black;
   overflow-y:scroll;
   overflow-x:hidden;
 
