@@ -33,3 +33,5 @@
 1. Component Render Animations
 
 2. Form REGEX
+
+3. Password Hash
