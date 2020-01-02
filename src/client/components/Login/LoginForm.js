@@ -15,7 +15,7 @@ class LoginForm extends React.Component{
 
   handleBtnClick = (e) => {
     e.preventDefault()
-    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/login/?email="${this.state.email}"&password="${this.password}"`)
+    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/login/?email="${this.state.email}"&password="${this.state.password}"`)
     .then( res => res.json() )
     .then( data => console.log(data))
     .catch( err => console.log(err))
@@ -33,11 +33,11 @@ class LoginForm extends React.Component{
       <FormContainer onChange={this.handleChange} >
         <ItemContainer style={{marginTop:'20px'}}>
           <Label> Email </Label>
-          <CustomInput placeholder='Enter Email Here' />
+          <CustomInput placeholder='Enter Email Here' name='email' />
         </ItemContainer> 
         <ItemContainer>
           <Label> Password </Label>
-          <CustomInput placeholder='Enter Password Here' />
+          <CustomInput placeholder='Enter Password Here' name='password' />
         </ItemContainer> 
         <CustomButton color={this.props.color_scheme['primary']}  onClick={this.handleBtnClick} > LOGIN </CustomButton>
       </FormContainer>
