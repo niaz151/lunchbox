@@ -4,9 +4,33 @@ import {connect} from 'react-redux';
 
 class LoginForm extends React.Component{
 
+
+  constructor(props){
+    super(props)
+    this.state = {
+      email: "",
+      password: ""
+    }
+  }
+
+  handleBtnClick = (e) => {
+    e.preventDefault()
+    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/login/?email="${this.state.email}"&password="${this.password}"`)
+    .then( res => res.json() )
+    .then( data => console.log(data))
+    .catch( err => console.log(err))
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: `${e.target.value}`
+    })
+  }
+
+
   render(){
     return(
-      <FormContainer>
+      <FormContainer onChange={this.handleChange} >
         <ItemContainer style={{marginTop:'20px'}}>
           <Label> Email </Label>
           <CustomInput placeholder='Enter Email Here' />
@@ -15,7 +39,7 @@ class LoginForm extends React.Component{
           <Label> Password </Label>
           <CustomInput placeholder='Enter Password Here' />
         </ItemContainer> 
-        <CustomButton color={this.props.color_scheme['primary']} > LOGIN </CustomButton>
+        <CustomButton color={this.props.color_scheme['primary']}  onClick={this.handleBtnClick} > LOGIN </CustomButton>
       </FormContainer>
     )
   }

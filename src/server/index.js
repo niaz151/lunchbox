@@ -196,6 +196,9 @@ app.get('/login', (req,res) => {
       if( res.json(results[0].password) === password){
         console.log('Verified User Details')
       }
+      else{
+        console.log('User Not Found')
+      }
     }
   })
 })
