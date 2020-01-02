@@ -193,8 +193,10 @@ app.get('/login', (req,res) => {
       res.send(err)
     }
     else{
-      var filtered_password = password.replace(/[' "]+/g, ' ')
-      if( res.json(results[0].password) === filtered_password){
+      var param_password = password.replace(/[' "]+/g, '')
+      var db_password = results[0].password
+
+      if( param_password === db_password){
         console.log('Verified User Details')
       }
       else{
