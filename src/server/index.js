@@ -194,11 +194,20 @@ app.get('/login', (req,res) => {
     }
     else{
       var param_password = password.replace(/[' "]+/g, '')
-      var db_password = results[0].password
 
-      if( param_password === db_password){
-        console.log('User Verified')
-        res.json({isLoggedIn:true})
+      // IF VALID RESPONSE
+      if(results.length > 0 ){
+        var db_password = results[0].password
+        
+        // EMAIL MATCHES BUT NOT USERNAME
+        if( param_password === db_password){
+          console.log('User Verified')
+          res.json({isLoggedIn:true})
+        }
+        else{
+          console.log('Wrong Password')
+          res.json({isLogginIn: false})
+        }
       }
       else{
         console.log('User Not Found')
