@@ -210,7 +210,8 @@ app.get('/login', (req,res) => {
         }
       }
       else{
-        return console.log('User Not Found')
+        console.log('User Not Found')
+        return res.json({isLogginIn: false})
       }
     }
   })
