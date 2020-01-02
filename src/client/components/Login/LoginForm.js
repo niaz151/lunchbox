@@ -6,7 +6,7 @@ class LoginForm extends React.Component{
 
   render(){
     return(
-      <Container>
+      <FormContainer>
         <ItemContainer style={{marginTop:'20px'}}>
           <Label> Email </Label>
           <CustomInput placeholder='Enter Email Here' />
@@ -16,12 +16,12 @@ class LoginForm extends React.Component{
           <CustomInput placeholder='Enter Password Here' />
         </ItemContainer> 
         <CustomButton color={this.props.color_scheme['primary']} > LOGIN </CustomButton>
-      </Container>
+      </FormContainer>
     )
   }
 }
 
-const Container = styled.div`
+const FormContainer = styled.form`
   width: 100%;
 `
 
@@ -37,7 +37,7 @@ const Label = styled.div`
   width: 100%;
   display: flex;
   align-items:center;
-  padding-left: 10px;
+  padding-left: 20px;
   font-family: 'Lato', sans-serif;
   font-size: 15px;;
 `
@@ -48,7 +48,7 @@ const CustomInput = styled.input`
   width: 90%;
   font-family: 'Lato',sans-serif;
   font-size: 15px;
-  padding-left: 10px;
+  margin-left: 20px;
 `
 const CustomButton = styled.button`
   height: 45px;
@@ -58,6 +58,7 @@ const CustomButton = styled.button`
   font-family: 'Lato',sans-serif;
   font-size: 15px;
   background-color: ${props => props.color};
+  margin-left:20px;
 `
 
 function mapStateToProps(state){

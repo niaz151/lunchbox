@@ -68,7 +68,7 @@ const Label = styled.div`
   width: 100%;
   display: flex;
   align-items:center;
-  padding-left: 10px;
+  padding-left: 20px;
   font-family: 'Lato', sans-serif;
   font-size: 15px;;
 `
@@ -79,7 +79,7 @@ const CustomInput = styled.input`
   width: 90%;
   font-family: 'Lato',sans-serif;
   font-size: 15px;
-  padding-left: 10px;
+  margin-left: 20px;
 `
 const CustomButton = styled.button`
   height: 45px;
@@ -88,6 +88,7 @@ const CustomButton = styled.button`
   color:white;
   font-family: 'Lato',sans-serif;
   font-size: 15px;
+  margin-left:20px;
   background-color: ${props => props.color};
 `
 
