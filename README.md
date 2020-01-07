@@ -1,20 +1,9 @@
 ### Tech Stack ###
 
-
- #### Front End ####
- 
- React (Styled Components) 
- 
+ React
  Redux
- 
- #### Back End ####
- 
  Node (Express, Nodemon)
-
  AWS ( MYSQL RDS, EC2, Nginx)
+ Jenkins (Github Webhook, Build Scripts)
  
- Jenkins (Github Webhook. Nginx Provider)
- 
- 
-
 ### Description ###
