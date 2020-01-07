@@ -1,6 +1,6 @@
 ### Tech Stack ###
 
- React
+ React (Styled Components)
  
  Redux
  
@@ -10,4 +10,3 @@
  
  Jenkins (Github Webhook, Build Scripts)
  
-### Description ###
