@@ -12,7 +12,8 @@ class App extends React.Component{
 
   // FETCH COLOR SCHEME FROM DB
   componentDidMount(){
-    fetch(`http://ec2-34-227-27-186.compute-1.amazonaws.com:3001/getcolorscheme?branch_id=1`)
+    console.log('hi')
+    fetch(`http://ec2-54-165-222-199.compute-1.amazonaws.com:3001/getcolorscheme?branch_id=1`)
     .then( res => res.json() )
     .then( color_scheme => this.props.addColorScheme(color_scheme))
   }
