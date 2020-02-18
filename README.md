@@ -1,3 +1,5 @@
+## A CRUD APP BASED AROUND A SIMPLICSTIC WORDPRESS CLONE ##
+
 ### Tech Stack ###
 
  React (Styled Components)
