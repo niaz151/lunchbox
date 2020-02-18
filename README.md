@@ -1,4 +1,4 @@
-### A CRUD Based Around A Simplistic WordPress Clone ###
+### A CRUD App Based Around A Simplistic WordPress Clone ###
 
 ### Tech Stack ###
 
