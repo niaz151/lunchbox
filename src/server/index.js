@@ -5,7 +5,7 @@ const app = express()
 const db = mysql.createConnection({
   host: 'database-2.c71ki1wt4h39.us-east-1.rds.amazonaws.com',
   user: 'admin',
-  password: 'lunchbox123',
+  password: '',
   database: 'test_db'
 })
 
